@@ -1,0 +1,69 @@
+/**index.wxss**/
+.index_swiper{
+  swiper{
+    width: 750rpx;
+    height: 375rpx;
+    swiper-item{
+      navigator{
+        image{
+          width: 100%;  
+        }
+      }
+    }
+  }
+}
+
+.index_bigType{
+  padding-top: 20rpx;
+  background-color: #F7F7F7;
+  .bigType{
+    //使用弹性盒子布局
+    display:flex;
+    navigator{
+      //平均分布页面
+      flex: 1;
+      image{
+        width: 150rpx;
+      }
+    }
+  }
+}
+
+.index_ishostProduct{
+  .product_title{
+    font-size: 32rpx;
+    font-weight: 600;
+    background-color: #E0E0E0;
+    padding: 20rpx;
+    color: var(--globalcolor);
+  }
+  .product_list{
+    //设置盒子为弹性盒子布局
+    display: flex;
+    //当子元素的宽度超过了容器就自动换行
+    flex-wrap: wrap;
+    .product_detail{
+      width: 46%;
+      text-align: center;
+      margin: 15rpx;
+      navigator{
+        image{
+          width: 100%;
+          background-color: #F5F5F5;
+          
+        }
+        .product_name{
+          //使文本在同一行
+          white-space: nowrap;
+          //隐藏溢出容器的
+          overflow: hidden;
+          //溢出的设置为... 要配合overflow-hidden和white-space使用 使溢出的在同一行显示...
+          text-overflow: ellipsis;
+        }
+        .product_price{
+          color: var(--globalcolor);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<!--pages/category/index.wxml-->
+<view class="cates">
+  <!-- mark:搜索框 start -->
+    <SearchBar />
+  <!-- mark:搜索框 end -->
+
+
+  <!-- mark:商品分类 start -->
+  <view class="cates_container">
+    
+    <!--mark:左侧分类-->
+    <scroll-view class="left_menu" scroll-y>
+        <view class="left_item {{index===currentIndex?'active':''}}"
+        wx:for="{{leftMenu}}"
+        wx:key="*this"
+        data-index="{{index}}"
+        bind:tap="getSwitch"
+        >
+        {{item}}
+        </view>
+    </scroll-view>
+   
+    <!--mark:右侧数据-->
+    <scroll-view class="right_container" scroll-y>
+      <view class="right_item"
+        wx:for="{{rightContainer}}"
+        wx:for-item="product"
+        wx:key="id"
+        >
+          <view class="product_title">
+            {{product.name}}
+          </view>
+          <view class="product_list">
+                <navigator
+                wx:for="{{product.productList}}"
+                wx:for-item="product_detail"
+                wx:key="id"
+                url="/pages/product_detail/index?id={{product_detail.id}}"
+                >
+                <image mode="widthFix" src="{{baseUrl+'/image/product/'+product_detail.proPic}}"></image>
+                <view class="right">
+                  <view class="product_name">{{product_detail.name}}</view>
+                  <view class="product_price">{{product_detail.price}}</view>
+                </view>
+               
+               
+                </navigator>
+              </view>
+        </view>
+
+    </scroll-view>
+
+  </view>
+  <!-- mark:商品分类 end -->
+
+</view>

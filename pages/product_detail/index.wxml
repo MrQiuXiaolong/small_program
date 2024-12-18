@@ -1,0 +1,73 @@
+<!--pages/product_detail/index.wxml-->
+<view class="product_swiper">
+  <!-- mark:商品轮播图片 start -->
+  <swiper autoplay indicator-dots circular>
+    <swiper-item
+    wx:for="{{productObj.productSwiperImageList}}"
+    wx:key="id"
+    > 
+      <navigator>
+        <image mode="widthFix" src="{{baseUrl+'/images/productSwiperImgs/'+item.name}}"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+  <!-- mark:商品轮播图片 en'dend -->
+
+  <!-- mark:商品信息介绍 start -->
+  <view class="product_price">¥{{productObj.price}}</view>
+  <view class="product_name">{{productObj.name}}</view>
+  <view class="product_description">
+  {{productObj.description}}
+  </view>
+  <!-- mark:商品信息介绍 start -->
+
+  <!-- mark:商品详情 start -->
+  <view class="desc_tabs">
+    <view class="desc_title">
+        <view class="title_item {{activeIndex==0?'active':''}}" bind:tap="handlerItemTab" data-index="0">商品介绍</view>
+        <view class="title_item {{activeIndex==1?'active':''}}" bind:tap="handlerItemTab" data-index="1">规格参数</view>
+    </view>
+
+    <view class="desc_content">
+      <block wx:if="{{activeIndex==0}}">
+        <rich-text nodes="{{productObj.productIntroImgs}}">
+        </rich-text>
+      </block>
+      <block wx:if="{{activeIndex==1}}">
+        <rich-text nodes="{{productObj.productParaImgs}}">
+        </rich-text>
+      </block>
+    </view>
+  </view>
+  <!-- mark:商品详情 end -->
+
+
+  <!-- mark:底部购物车 start -->
+  <view class="btm_tool">
+    <navigator url="/pages/index/index" open-type="switchTab" class="tool_item">
+      <view class="iconfont icon-shouye1"></view>
+      <view>首页</view>
+    </navigator>
+
+    <view class="tool_item">
+     
+      <view class="iconfont icon-kefu"></view>
+      <view>客户</view>
+      <button open-type="contact"></button>
+    </view>
+
+    <navigator url="/pages/cart/index" open-type="switchTab" class="tool_item">
+      <view class="iconfont icon-gouwuche"></view>
+      <view>购物车</view>
+    </navigator>
+
+    <view class="tool_item btn_cart" bind:tap="handlerCartAdd">
+      <view>加入购物车</view>
+    </view>
+
+    <view class="tool_item btn_buy">
+      <view bind:tap="handlerBuy">立即购买</view>
+    </view>
+  </view>
+  <!-- mark:底部购物车 end -->
+</view>

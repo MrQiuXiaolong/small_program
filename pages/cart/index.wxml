@@ -1,0 +1,86 @@
+<!--pages/cart/index.wxml-->
+<view class="shopping_cart">
+  <!--mark:收货地址 start -->
+  <!-- 没有收获地址时 -->
+  <view class="receiving_addressn_no" wx:if="{{!address}}">
+    <button type="warn" plain bind:tap="clickOnTheAddress">获取收获地址</button>
+  </view>
+
+  <!--有收获地址时 -->
+  <view class="receiving_addressn_yes" wx:else>
+
+      <!-- 用户信息 -->
+      <view class="user_information">
+        <view>收货人：{{"邱小龙"}} {{18053388478}}</view>
+        <view>{{"甘肃省陇南市成县陇南师范学院"}}</view>
+      </view>
+      <!-- 更换地址 -->
+      <view class="change_address">
+        <button bind:tap="clickOnTheAddress" size="mini" type="default" plain>更换地址</button>
+      </view>
+    
+   
+  </view>
+<!--mark:收货地址 end--> 
+<!--mark:购物车商品 start-->
+  <view class="cart_content">
+    <view class="cart_main">
+    <block wx:if="{{cart.length!=0}}">
+      <view class="cart_item"
+      wx:for="{{cart}}"
+      wx:key="id"
+      >
+        <!-- 复选框 -->
+        <view class="cart_chk_warp">
+        <checkbox-group data-id="{{item.id}}" bindchange="handlerCheck">
+          <checkbox checked="{{item.check}}"></checkbox>
+        </checkbox-group>
+        </view>
+        <!-- 图片 -->
+        <navigator class="cart_img_warp" url="/pages/product_detail/index?id={{item.id}}">
+          <image mode="widthFix" src="{{baseUrl+'/image/product/'+item.proPic}}"></image>
+        </navigator>
+
+        <!-- 详细信息 -->
+          <view class="cart_info_warp">
+            <navigator url="/pages/product_detail/index?id={{item.id}}">
+            <view class="goods_name">{{item.name}}</view>
+            </navigator>
+            <view class="goods_price_warp">
+            <view class="goods_price">¥ {{item.price}}</view>
+            <view class="cart_num_tool">
+            <view class="num_edit" bind:tap="handlerNum" data-id="{{item.id}}" data-event="{{-1}}">-</view>
+            <view class="goods_num">{{item.num}}</view>
+            <view class="num_edit" bind:tap="handlerNum" data-id="{{item.id}}" data-event="{{1}}">+</view>
+            </view>
+            </view>
+          </view>
+      </view>
+    </block>
+    <block wx:else>
+      <image src="/icons/cart.gif"></image>
+    </block>
+    </view>
+  </view>
+<!--mark:购物车商品 end-->
+
+
+<!--mark:底部工具栏 start-->
+<view class="footer_tool">
+  <view class="all_check">
+    <checkbox-group bindchange="handlerSelectAll">
+      <checkbox checked="{{allCheck}}"><text decode="true"> &nbsp;&nbsp;全选 </text></checkbox>
+    </checkbox-group>
+  </view>
+  <view class="total_price">
+    <view class="price">
+    合计：<text class="price_text">¥ {{totalPrice}}</text>
+    </view>
+  </view>
+  <view class="order_pay" bind:tap="handlerPay">
+    结算({{totalNum}})
+  </view>
+</view>
+<!--mark:底部工具栏 end-->
+
+</view>

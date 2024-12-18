@@ -1,0 +1,23 @@
+<!--pages/order/index.wxml-->
+<view class="order_main">
+  <view class="order_item"
+  wx:for="{{orderList}}"
+  wx:key="id"
+  >
+
+    <view class="order_no_row">
+      <view class="order_no_text">订单编号</view>
+      <view class="order_no_value">{{item.orderNo}}</view>
+    </view>
+    <view class="order_price_row">
+      <view class="order_price_text">订单价格</view>
+      <view class="order_price_value">¥{{item.totalPrice}}</view>
+    </view>
+    <view class="order_time_row">
+      <view class="order_time_text">订单日期</view>
+      <view class="order_time_value">{{item.createDate}}</view>
+    </view>
+
+  </view>
+
+</view>

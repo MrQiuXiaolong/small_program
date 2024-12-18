@@ -1,0 +1,60 @@
+<!--pages/my/index.wxml-->
+<view class="user_info">
+<!-- mark:用户背景信息 start -->
+<view class="user_info_bg">
+<view class="user_info_wrap">
+<image class="user_icon" src="{{userInfo.avatarUrl}}"></image>
+<view class="user_name">{{userInfo.nickName}}</view>
+</view>
+</view>
+<!-- mark:用户背景信息 end -->
+
+<!-- mark:用户操作菜单 start -->
+<view class="user_menu">
+    <!-- mark:订单 start -->
+    <view class="order_warp">
+        <view class="order_title">我的订单</view>
+        <view class="order_content">
+
+          <navigator>
+            <view class="iconfont icon-daifukuan"></view>
+            <view class="order_name">待付款</view>
+          </navigator>
+
+          <navigator>
+            <view class="iconfont icon-daishouhuo"></view>
+            <view class="order_name">待收货</view>
+          </navigator>
+
+          <navigator>
+            <view class="iconfont icon-tuikuantuihuo"></view>
+            <view class="order_name">退货/退款</view>
+          </navigator>
+
+          <navigator url="/pages/order/index">
+            <view class="iconfont icon-quanbudingdan"></view>
+            <view class="order_name">全部订单</view>
+          </navigator>
+        </view>
+    </view>
+    <!-- mark:地址 start -->
+    <view class="address_warp">
+      收货地址管理
+    </view>
+    <!-- mark:相关信息 start -->
+    <view class="add_info_warp">
+      <view class="app_info_item app_info_contact">
+        <text>联系客服</text>
+        <text>3480705950@qq.com</text>
+      </view>
+      <view class="app_info_item">
+        <button open-type="feedback" class="feedback">意见反馈</button>
+      </view>
+      <view class="app_info_item" bind:tap="contactUs">
+        关于我们
+      </view>
+    </view>
+</view>
+<!-- mark:用户操作菜单 end -->
+</view>
+

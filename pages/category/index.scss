@@ -1,0 +1,67 @@
+/* pages/category/index.wxss */
+.cates{
+  height: 100%;
+  .cates_container{
+    //100vh 表示视口高度-90rpx->(表示输入框的高度) 
+    height:  calc( 100vh - 90rpx );
+    display: flex;
+    .left_menu{
+      flex: 2;
+     
+      .left_item{
+        margin-top: 5rpx;
+        height: 80rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30rpx;
+      }
+      .active{
+        font-weight: bolder;
+        color: var(--globalcolor);
+        border-left: 8rpx solid var(--globalcolor);
+       
+      }
+    }
+    .right_container{
+      flex: 5;  
+      .right_item{
+        .product_title{
+          font-weight: bolder;
+        }
+        .product_list{
+          navigator{
+            margin: 10rpx;
+            display: flex;
+            background-color: #F8F8F8;
+            image{
+              width: 100%;
+              flex: 1;
+            }
+            .right{
+              flex: 3;
+              display: flex;
+              //垂直布局
+              flex-direction: column;
+              //平均分布空间
+              justify-content: space-around;
+
+              .product_name{
+                padding-top: 10rpx;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              .product_price{
+                  padding-bottom:10rpx ;
+              }
+            }
+
+          }
+
+        }
+
+      }
+    }
+  }
+}

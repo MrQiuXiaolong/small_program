@@ -1,0 +1,87 @@
+<!--index.wxml-->
+<view>
+<!-- mark:搜索框 start -->
+<SearchBar />
+<!-- mark:搜索框 end -->
+
+
+<!-- mark:轮播图 start -->
+<view class="index_swiper">
+  <swiper
+  indicator-dots
+  indicator-active-color="#FF5700"
+  autoplay
+  interval="{{3000}}"
+  circular
+  >
+    <swiper-item
+    wx:for="{{swiperList}}"
+    wx:for-item="swiper"
+    wx:key="id"
+    >
+      <navigator>
+          <!--  mode="widthFix" 自适应-->
+          <image mode="widthFix" src="{{baseUrl+'/image/swiper/'+swiper.swiperPic}}"></image>
+      </navigator>
+    </swiper-item>
+  </swiper> 
+</view>
+<!-- mark:轮播图 end -->
+
+
+<!-- mark:商品大类 start -->
+<view class="index_bigType">
+  <!--第一行-->
+  <view class="bigType">
+    <navigator
+    wx:for="{{bigType_row1}}"
+    wx:for-item="bigType"
+    wx:key="id"
+    data-index="{{index}}"
+    bind:tap="handlerJump"
+    url='/pages/category/index'
+    open-type="switchTab" 
+    >
+      <image mode="widthFix" src="{{baseUrl+'/image/bigType/'+bigType.image}}" style="width: 151rpx; display: inline-block; box-sizing: border-box"></image>
+    </navigator>
+  </view>
+  <!--第二行-->
+  <view class="bigType">
+    <navigator
+    wx:for="{{bigType_row2}}"
+    wx:for-item="bigType"
+    wx:key="id"
+    data-index="{{index+5}}"
+    bind:tap="handlerJump"
+    url='/pages/category/index'
+    open-type="switchTab" 
+    >
+      <image mode="widthFix" src="{{baseUrl+'/image/bigType/'+bigType.image}}"></image>
+    </navigator>
+  </view>
+  
+</view>
+<!-- mark:商品大类 end -->
+
+
+<!-- mark:商品热卖 start -->
+<view class="index_ishostProduct">
+    <view class="product_title">热卖商品</view>
+    <view class="product_list">
+      <view class="product_detail"
+      wx:for="{{isHostProductList}}"
+      wx:for-item="productDetail"
+      wx:key="id"
+      >
+        <navigator>
+          <image mode="widthFix" src="{{baseUrl+'/image/product/'+productDetail.proPic}}"></image>
+          <view class="product_name">{{productDetail.name}}</view>
+          <view class="product_price">{{productDetail.price}}</view>
+          <button size="min" type="warn">立即购买</button>
+        </navigator>
+      </view>
+    </view>
+</view>
+<!-- mark:商品热卖 end -->
+
+</view>

@@ -1,0 +1,41 @@
+/* pages/search/index.wxss */
+page{
+  background-color: #9F9F9F;
+  padding-top: 20rpx;
+}
+.search_row{
+  height: 70rpx;
+  display: flex;
+  input{
+    background-color: #FFFFFF;
+    flex: 1;
+    height: 100%;
+    padding-left:30rpx;
+  }
+  button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:110rpx !important;
+    font-size: 26rpx;
+    padding: 0;
+    margin: 0 10rpx;
+    height: 100%;
+
+  }
+}
+.search_context{
+  margin-top: 15rpx;
+  padding: 0;
+  navigator{
+    background-color: #FFFFFF;
+    font-size: 26rpx;
+    padding: 15rpx;
+    align-items: center;
+    border-radius: 1px solid #EAEAEA;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+  }
+}
